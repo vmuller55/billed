@@ -18,15 +18,20 @@ const row = (bill) => {
     </tr>
     `)
   }
-
+/**
+ * Permet de trier les valeurs non présent de base, détécté avec test
+ */
 const rows = (data) => {
-  return (data && data.length) ? data.map(bill => row(bill)).join("") : ""
+  return (data && data.length) ? data.sort((a, b) => sortBills(a.date, b.date)).map(bill => row(bill)).join("") : ""
+}
+const sortBills = (billA, billB) => {
+  return new Date(billA) < new Date(billB) ? 1 : -1;
 }
 
 export default ({ data: bills, loading, error }) => {
   
   const modal = () => (`
-    <div class="modal fade" id="modaleFile" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="modaleFile" tabindex="-1" role="dialog" name="modal" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
