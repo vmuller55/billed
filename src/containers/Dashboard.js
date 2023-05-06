@@ -149,6 +149,9 @@ export default class {
 
     bills.forEach(bill => {
       $(`#open-bill${bill.id}`).click((e) => {
+        /**
+         * Permet de stopper la propagation
+         */
         e.stopImmediatePropagation()
         this.handleEditTicket(e, bill, bills)
       })

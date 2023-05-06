@@ -23,15 +23,16 @@ export default class NewBill {
     let fileName = filePath[filePath.length-1]
     const formData = new FormData()
     const email = JSON.parse(localStorage.getItem("user")).email
-
+    /**
+     * Permet de vérifier le type d'image
+     */
     if (file.type !== 'image/png' && file.type !== 'image/jpeg') {
         alert('Format de fichier invalide. Veuillez télécharger un fichier au format jpg, jpeg ou png.') 
         input.value = ''
         return
     } else {
-        
         formData.append("file", file);
-		formData.append("email", email);
+		    formData.append("email", email);
         this.store
         .bills()
         .create({
