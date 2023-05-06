@@ -37,7 +37,7 @@ export default class Login {
 
   }
   /**
-   * Bug sur la seléction employee au lien de admin
+   * Modification du querry selector qui pointait sur 'employee' au lieu de 'admin'
    */
   handleSubmitAdmin = e => {
     e.preventDefault()
